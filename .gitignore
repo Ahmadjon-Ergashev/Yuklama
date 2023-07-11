@@ -8,3 +8,4 @@ venv/
 downloads/
 # Other
 *.xlsx
+*.sqlite3
