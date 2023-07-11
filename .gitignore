@@ -5,8 +5,6 @@ venv/
 .git/
 
 # Sources
-static/bootstrap/
-static/boxicons/
-
+downloads/
 # Other
 *.xlsx
