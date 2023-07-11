@@ -2,7 +2,6 @@
 venv/
 .vscode/
 .idea/
-.idea/
 .git/
 
 # Sources
@@ -10,5 +9,4 @@ static/bootstrap/
 static/boxicons/
 
 # Other
-Yuklama.xlsx
 *.xlsx
