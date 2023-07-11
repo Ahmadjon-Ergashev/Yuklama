@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/home.css' %}">
+{% endblock css %}
+{% block header-title %}BOSH SAHIFA{% endblock header-title %}
+{% block content %}
+<div class="container">
+    <a href="{% url 'particles' %}">
+        <div class="card card-settings">
+            <i class='bx bx-git-compare'></i>
+            <span>Yuklama</span>
+        </div>
+    </a>
+    <a href="{% url 'teachers' %}">
+        <div class="card card-teachers">
+            <i class='bx bxs-user' ></i>
+            <span>O'qituvchilar</span>
+        </div>
+    </a>
+    <a href="{% url 'sciences' %}">
+        <div class="card card-sciences">
+            <i class='bx bxs-book-alt' ></i>
+            <span>Fanlar</span>
+        </div>
+    </a>
+    <a href="{% url 'archive' %}">
+        <div class="card card-settings">
+            <i class='bx bx-archive-out' ></i>
+            <span>Arxiv</span>
+        </div>
+    </a>
+    <a href="#">
+        <div class="card card-settings">
+            <i class='bx bxs-cog' ></i>
+            <span>Sozlamalar</span>
+        </div>
+    </a>
+</div>
+
+{% endblock content %}
+
+

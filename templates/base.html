@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> {% endcomment %}
+    {% comment %} <link href="{% static '/bootstrap/css/bootstrap.min.css' %} " rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> {% endcomment %}
+    <link href="{% static '/boxicons/css/boxicons.min.css' %}" rel='stylesheet'>
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+    {% block css %}{% endblock css %}
+    <title>Yuklama tizimi</title>
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="logo">
+            <span>YUKLAMA TIZIMI</span>
+        </a>
+        <span class="header-title">{% block header-title %}{% endblock header-title %}</span>
+        <div class="profile">
+            <button class="dropbtn">
+            <i class='bx bxs-user-circle'></i>
+            </button>
+            <div class="profile-content">
+                <ul>
+                <li><p>{{ user.first_name }} <br> {{ user.last_name }}</p></li>
+                <li><a href="#">Profil</a></li>
+                <li><a href="{% url 'self_particles' %}">Yuklamalar</a></li>
+                <li><a href="{% url 'logout' %}">Chiqish</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <nav class="sidebar">
+        <div class="sidebar-inner">
+            <div class="sidebar-header">
+                <button type="button" class="sidebar-burger" onclick="toggleSidebar()">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <span class="sidebar-logo">Menu</span>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="{% url 'home' %}">
+                    <i class='bx bxs-home' ></i>
+                    <span>Bosh sahifa</span>
+                </a>
+                <a href="{% url 'particles' %}">
+                    <i class='bx bx-git-compare'></i>
+                    <span>Yuklama</span>
+                </a>
+                <a href="{% url 'teachers' %}">
+                    <i class='bx bxs-user' ></i>
+                    <span>O'qituvchilar</span>
+                </a>
+                <a href="{% url 'sciences' %}" class="has-border">
+                    <i class='bx bxs-book-alt' ></i>
+                    <span>Fanlar</span>
+                </a>
+                <a href="{% url 'archive' %}">
+                    <i class='bx bx-archive-out' ></i>
+                    <span>Arxiv</span>
+                </a>
+                <a href="{% url 'settings' %}">
+                    <i class='bx bxs-cog' ></i>
+                    <span>Sozlamalar</span>
+                </a>
+                <a href="{% url 'login' %}">
+                    <i class='bx bx-log-out' ></i>
+                    <span>Chiqish</span>
+                </a>
+            </nav>
+        </div>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <!-- <footer>
+    </footer> -->
+
+    <script type="text/javascript">
+        function toggleSidebar(){
+            document.body.classList.toggle("open");
+        }
+        function PopupDelete(url){
+            console.log(url)
+            const div = document.getElementsByClassName('background')[0];
+            div.classList.toggle("show");
+            document.getElementById('confirm-delete').onclick = (location.href = url);
+        }
+            
+    </script>
+    </body>
+    </html>

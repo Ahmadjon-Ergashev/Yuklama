@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/groups.css' %}">
+{% endblock css %}
+{% block content %}
+
+<div class="container">
+    {% if object_list %}
+    <table>
+        <caption>GURUHLAR RO'YXATI</caption>
+        <tr>
+            <th>Guruh nomi</th>
+            <th>Yo'nalish</th>
+            <th>Talabalar soni</th>
+            <th>Kurs</th>
+            <th>Til</th>
+            <th>Fanlar</th>
+            <th></th>
+        </tr>
+        {% for obj in object_list %}
+        <tr>
+            <td>{{ obj.name }}</td>
+            <td>{{ obj.major }}</td>
+            <td>{{ obj.student_count }}</td>
+            <td>{{ obj.course }}</td>
+            <td>{{ obj.language }}</td>
+            <td>
+                {% if obj.sciences.all %}
+                    <ul>
+                        {% for science in obj.sciences.all %}
+                            <li>{{ science.science }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>-</p>
+                {% endif %}
+            </td>
+            <td>
+                <button id="Edit" onclick="location.href=`{% url 'group_edit' obj.pk %}`"><i class='bx bxs-edit-alt'></i></button>
+                <button id="Delete"><i class='bx bxs-trash' ></i></button>
+                <button id="Detail" onclick="location.href=`{% url 'group_detail' obj.pk %}`"><i class='bx bxs-info-circle' ></i></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>Ma'lumot yo'q</p>
+    {% endif %}
+</div>
+<div class="container-control">
+    <a href="{% url 'group_create' %}" id="Add">
+        <i class='bx bx-message-square-add'></i>
+        <span>Qo'shish</span>
+    </a>
+</div>
+{% endblock content %}

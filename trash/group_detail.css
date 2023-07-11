@@ -1,0 +1,27 @@
+.container{
+    width: calc(100% - 150px);
+}
+.caption p{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.2em;
+    width: 100%;
+    /* margin: 0; */
+    border-right: 1px solid #9d9d9d;
+}
+.caption{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* column-gap: 30px; */
+    /* flex-wrap: wrap; */
+}
+p label{
+    /* width: 170px; */
+    font-weight: 500;
+    margin: 10px 0;
+}
+td:last-child {
+    width: 90px;
+}

@@ -1,0 +1,19 @@
+.background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 0;
+    /* z-index: 1000; */
+}
+.card{
+    background-color: white;
+    text-align: center;
+    position: relative;
+    margin: 50px auto;
+    width: 300px;
+}

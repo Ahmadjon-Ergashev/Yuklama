@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/particle_teacher.css' %}">
+{% endblock css %}
+{% block header-title %}YUKLAMA{% endblock header-title %}
+{% block content %}
+<div class="container caption">
+    <p><label>Fan</label>{{ particle.science }}</p>
+    <p><label>Yo'nalish</label>{% for major in particle.majors.all %}{{ major }},{% endfor %}</p>
+    <p><label>Potok</label>{{ particle.flow }}</p>
+    <p><label>Guruhlar</label>{{ particle.group }}</p>
+    <p><label>Talabalar soni</label>{{ particle.student_count }}</p>
+    <p><label>Kurs</label>{{ particle.course }}</p>
+    <p><label>Til</label>{{ particle.language }}</p>
+    <p><label>Semestr</label>{{ particle.semester }}</p>
+    <p><label>Ma'ruza</label>{{ particle.lecture }}</p>
+    <p><label>Amaliyot</label>{{ particle.practice }}</p>
+    <p><label>Laboratoriya</label>{{ particle.laboratory }}</p>
+    <p><label>Seminar</label>{{ particle.seminar }}</p>
+    <p><label>Kurs ishi</label>{{ particle.coursework }}</p>
+    {% comment %} <p style="border: none;"><label>Til</label>{{ particle.language }}</p> {% endcomment %}
+</div>
+<div class="container-control">
+    <a href="{% url 'particles' %}" id="Back">
+        <i class='bx bx-arrow-back'></i>
+        <span>Ortga</span>
+    </a>
+    {% if is_complete %}
+    <a href="#" onclick="javascript:alert('Taqsimlangan');return false;" id="Add">
+    {% else %}
+    <a href="{% url 'particle_teachers_create' particle.pk %}" id="Add">
+    {% endif %}
+        <i class='bx bx-message-square-add'></i>
+        <span>Qo'shish</span>
+    </a>
+    <a href="#" id="Export">
+        <i class='bx bx-spreadsheet' ></i>
+        <span>Export</span>
+    </a>
+</div>
+<div class="container">
+    {% if object_list %}
+    <table>
+        <caption>YUKLAMA TAQSIMLASH</caption>
+        <tr>
+            <th>O'qituvchi</th>
+            <th>Fan</th>
+            <th>Talabalar soni</th>
+            <th>Potok</th>
+            <th>Guruhlar</th>
+            <th>Til</th>
+            <th>Semestr</th>
+            <th>Ma'ruza</th>
+            <th>Amaliyot</th>
+            <th>Laboratoriya</th>
+            <th>Seminar</th>
+            <th>Kurs ishi</th>
+            <th>Reyting</th>
+            <th></th>
+        </tr>
+        {% for obj in object_list %}
+        <tr>
+            <td>{{ obj.teacher }}</td>
+            <td>{{ obj.particle }}</td>
+            <td>{{ obj.student_count }}</td>
+            <td>{{ obj.flow }}</td>
+            <td>{{ obj.group }}</td>
+            <td>{{ obj.language }}</td>
+            <td>{{ obj.semester }}</td>
+            <td>{{ obj.lecture }}</td>
+            <td>{{ obj.practice }}</td>
+            <td>{{ obj.laboratory }}</td>
+            <td>{{ obj.seminar }}</td>
+            <td>{{ obj.coursework }}</td>
+            <td>{{ obj.raiting }}</td>
+            <td>
+                <button id="Edit" onclick="location.href=`{% url 'particle_teachers_create' obj.pk %}`"><i class='bx bxs-edit-alt'></i></button>
+                <button id="Delete" onclick="location.href=`{% url 'delete' particle.id obj.pk %}`"><i class='bx bxs-trash' ></i></button>
+                {% comment %} <button id="Detail" onclick="location.href=``"><i class='bx bx-refresh'></i></button> {% endcomment %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>Ma'lumot yo'q</p>
+    {% endif %}
+</div>
+
+{% endblock content %}

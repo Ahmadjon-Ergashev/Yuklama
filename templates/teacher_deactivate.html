@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/edit_div.css' %}">
+    <link rel="stylesheet" href="{% static '/css/particle_teacher.css' %}">
+    <link rel="stylesheet" href="{% static '/css/delete.css' %}">
+{% endblock css %}
+{% block header-title %}O'QITUVCHILAR{% endblock header-title %}
+{% block content %}
+<div class="container caption">
+    <span>Ushbu ma'lumotli o'qituvchi o'chirilsin(arxivlansin)mi?</span>
+    <p><label>FISH</label>{{ object.last_name }} {{ object.first_name }}</p>
+    <p><label>Lavozimi</label>{{ object.position }}</p>
+    <p><label>Ilmiy unvoni</label>{{ object.degree }}</p>
+    <p><label>Asosiy Shtat</label>{{ object.main_stage }}</p>
+    <p><label>O'rindosh Shtat</label>{{ object.addition_stage }}</p>
+    <p><label>Soatbay</label>{{ object.per_hour }}</p>
+    <p><label>Telefon raqami</label>{{ object.phone }}</p>
+    <p><label>Jisni</label>{{ object.gender }}</p>
+    <p><label>Tug'ilgan sanasi</label>{{ object.birth|date:"d.m.Y" }}</p>
+    <p><label>Fanlar</label>{% if obj.sciences.all %}
+                                <ul>
+                                    {% for science in obj.sciences.all %}
+                                        <li>{{ science.name }}</li>
+                                     {% endfor %}
+                                </ul>
+                            {% else %}
+                                    <p>-</p>
+                            {% endif %}
+    </p>
+</div>
+<div class="container-control">
+    <form method="Post">{% csrf_token %}
+        {{ form.as_div }}
+    <button type="submit" id="Delete"><i class='bx bxs-trash' ></i>O'chirish</button>
+    <button type="button" id="Cancel" onclick="location.href='{% url 'teachers' %}';">Bekor qilish</button>
+    </form>
+</div>
+{% endblock content %}

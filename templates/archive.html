@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/home.css' %}">
+{% endblock css %}
+{% block header-title %}ARXIV{% endblock header-title %}
+{% block content %}
+<div class="container">
+    <a href="{% url 'deactivated_teachers' %}">
+        <div class="card card-teachers">
+            <i class='bx bxs-user' ></i>
+            <span>O'qituvchilar</span>
+        </div>
+    </a>
+    <a href="{% url 'deactivated_sciences' %}">
+        <div class="card card-sciences">
+            <i class='bx bxs-book-alt' ></i>
+            <span>Fanlar</span>
+        </div>
+    </a>
+    <a href="#">
+        <div class="card card-settings">
+            <i class='bx bxl-stack-overflow' ></i>
+            <span>Yo'nalishlar</span>
+        </div>
+    </a>
+</div>
+
+{% endblock content %}
+
+

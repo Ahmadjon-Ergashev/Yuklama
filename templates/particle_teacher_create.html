@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/edit_div.css' %}">
+{% endblock css %}
+{% block header-title %}YUKLAMA{% endblock header-title %}
+{% block content %}
+<div class="container edit">
+    <h1>YUKLAMA TAQSIMLASH</h1>
+    <form action="" method="post">{% csrf_token %}
+        {% for field in form %}
+            <div>
+                {{ field.errors }}
+                {% if field.name == "teacher" %}
+                    {{ field.label_tag }} 
+                    <select name="teacher" id="id_teacher">
+                        <option disabled class="option-splitter">Tavsiya etiladi</option>
+                        {% for teacher in recommended_teachers %}
+                            <option value="{{ teacher.id }}">{{ teacher }}</option>
+                        {% endfor %}
+                        <option disabled class="option-splitter">Boshqa</option>
+                        {% for teacher in other_teachers %}
+                            <option value="{{ teacher.id }}">{{ teacher }}</option>
+                        {% endfor %}
+                    </select>
+                {% elif field.name == "lecture" or field.name == "practice" or field.name == "laboratory" or field.name == "seminar" or field.name == "coursework"%}
+                    {{ field.label_tag }} 
+                    <div class="field_check">
+                        <label for="check_{{ field.name }}">Taqsimlash</label>
+                        <input type="checkbox" id="check_{{ field.name }}">
+                        {{ field }}
+                    </div>
+                {% else %}
+                    {{ field.label_tag }} 
+                    {{ field }}
+                {% endif %}
+
+            </div>
+        {% endfor %}
+        
+        <div class="buttons">
+            <input type="submit" value="Saqlash">
+            <input type="button" value="Bekor qilish" onclick="javascript:history.back();">
+        </div>
+    </form>
+</div>
+<script>
+
+    document.getElementById("id_lecture").hidden = true;
+    document.getElementById("id_practice").hidden = true;
+    document.getElementById('id_laboratory').hidden = true;
+    document.getElementById('id_seminar').hidden = true;
+    document.getElementById('id_coursework').hidden = true;
+
+    document.getElementById("id_lecture").value = "{{ default_values.lecture }}"
+    document.getElementById("id_practice").value = "{{ default_values.practice }}"
+    document.getElementById('id_laboratory').value = "{{ default_values.laboratory }}"
+    document.getElementById('id_seminar').value = "{{ default_values.seminar }}"
+    document.getElementById('id_coursework').value = "{{ default_values.coursework }}"
+    document.getElementById('id_student_count').value = "{{ default_values.student_count }}"
+    document.getElementById('id_flow').value = "{{ default_values.flow }}"
+    document.getElementById('id_group').value = "{{ default_values.group }}"
+    document.getElementById('id_semester').value = "{{ default_values.semester }}"
+
+    document.getElementById("id_lecture").max = "{{ default_values.lecture }}"
+    document.getElementById("id_practice").max = "{{ default_values.practice }}"
+    document.getElementById('id_laboratory').max = "{{ default_values.laboratory }}"
+    document.getElementById('id_seminar').max = "{{ default_values.seminar }}"
+    document.getElementById('id_coursework').max = "{{ default_values.coursework }}"
+    document.getElementById('id_student_count').max = "{{ default_values.student_count }}"
+    
+    document.getElementById('check_lecture').onchange = function() {
+        document.getElementById('id_lecture').hidden = !this.checked;
+        document.getElementById("id_lecture").value = "{{ default_values.lecture }}" * this.checked;
+    };
+    document.getElementById('check_practice').onchange = function() {
+        document.getElementById('id_practice').hidden = !this.checked;
+        document.getElementById("id_practice").value = "{{ default_values.practice }}" * this.checked;
+    };
+    
+    document.getElementById('check_laboratory').onchange = function() {
+        document.getElementById('id_laboratory').hidden = !this.checked;
+        document.getElementById("id_laboratory").value = "{{ default_values.laboratory }}" * this.checked;
+    };
+    
+    document.getElementById('check_seminar').onchange = function() {
+        document.getElementById('id_seminar').hidden = !this.checked;
+        document.getElementById("id_seminar").value = "{{ default_values.seminar }}" * this.checked;
+    };
+    
+    document.getElementById('check_coursework').onchange = function() {
+        document.getElementById('id_coursework').hidden = !this.checked;
+        document.getElementById("id_coursework").value = "{{ default_values.coursework }}" * this.checked;
+    };
+    
+    document.onchange = function(){
+        document.getElementById('id_raiting').value = parseInt(document.getElementById('id_student_count').value) * 0.5 * parseInt(document.getElementById('id_semester').value)
+        console.log(parseFloat("{{ default_values.lecture }}"))
+        
+    }
+</script>
+{% endblock content %}
+
+{% comment %} *
+        (document.getElementById("id_lecture").value / "{{ default_values.lecture }}" * 0.5 + 
+        (document.getElementById("id_practice").value + document.getElementById("id_laboratory").value + 
+        document.getElementById("id_seminar").value + document.getElementById("id_coursework").value) / 
+        ("{{ default_values.practice }}" + "{{ default_values.laboratory }}" + "{{ default_values.seminar }}" + "{{ default_values.coursework }}")) {% endcomment %}

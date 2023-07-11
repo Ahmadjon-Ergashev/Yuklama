@@ -1,0 +1,7 @@
+i.lang{
+    font-size: 4.2em;
+    font-weight: 550;
+}
+.card:hover i.lang{
+    font-size: 3.5em;
+}

@@ -1,0 +1,32 @@
+{% extends 'group_detail.html' %}
+{% block sciences %}
+<div class="container">
+    <table>
+        <caption>{{ object.name }} GURUH FANLAR RO'YXATI</caption>
+        <tr>
+            <th>Fan</th>
+            <th>Semestr</th>
+            <th>Ma'ruza</th>
+            <th>Amaliyot</th>
+            <th>Laboratoriya</th>
+            <th>Seminar</th>
+            <th>Kurs ishi</th>
+            <th></th>
+        </tr>
+    {% for science in object.sciences.all %}
+    <tr>
+        <td>{{ science.science }}</td>
+        <td>{{ science.semester }}</td>
+        <td>{{ science.lecture }}</td>
+        <td>{{ science.practice }}</td>
+        <td>{{ science.laboratory }}</td>
+        <td>{{ science.seminar }}</td>
+        <td>{{ science.coursework }}</td>
+        <td></td>
+    </tr>
+    {% endfor %}
+    </table>
+</div>
+
+
+{% endblock sciences %}

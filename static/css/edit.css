@@ -1,0 +1,94 @@
+form{
+    display: flex;
+    flex-wrap: wrap;
+}
+.edit{
+    padding: 15px 50px;
+}
+.edit h1{
+    text-align: center;
+}
+form p{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2em;
+    margin: 15px;
+}
+form p label{
+    width: 160px;
+}
+form p input, form p select{
+    width: 300px;
+    font-size: 1em;
+}
+form input[type="submit"]{
+    width: 130px;
+    font-size: 1.2em;
+    background-color: #396db1;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+form input[type="button"]{
+    width: 130px;
+    font-size: 1.2em;
+    background-color: #b1394d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+form input[type="submit"]:hover, form input[type="button"]:hover {
+    opacity: 0.9;
+    transition: 0.3s;
+}
+form input[type="submit"]:active, form input[type="button"]:active {
+    opacity: 0.85;
+    transition: 0.2s;
+}
+form sub{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+form div{
+    box-shadow: none;
+    padding: 0;
+}
+form fieldset label{
+    font-size: 1.2em;
+}
+
+@media only screen and (max-width: 615px) {
+    .edit{
+        padding: 10px;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 450px) {
+    form p{
+        font-size: 0.85em;
+    }
+    h1{
+        font-size: 1.5em;
+    }
+    form sub input[type="submit"], form sub input[type="button"]{
+        font-size: 0.85em;
+    }
+}
+@media only screen and (max-width: 350px) {
+    form div{
+        font-size: 0.75em;
+    }
+    h1{
+        font-size: 1.3em;
+    }
+    form sub input[type="submit"], form sub input[type="button"]{
+        font-size: 0.75em;
+    }
+    form sub{
+        gap: 20px;
+    }
+}

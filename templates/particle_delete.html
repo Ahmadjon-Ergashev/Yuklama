@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/edit_div.css' %}">
+    <link rel="stylesheet" href="{% static '/css/particle_teacher.css' %}">
+    <link rel="stylesheet" href="{% static '/css/delete.css' %}">
+{% endblock css %}
+{% block header-title %}YUKLAMA{% endblock header-title %}
+{% block content %}
+<div class="container caption">
+    <span>Ushbu ma'lumotli yuklama o'chirilsinmi?</span>
+    <p><label>Fan</label>{{ object.science }}</p>
+    <p><label>Yo'nalishlar</label>
+        {% for major in object.majors.all %}
+            {{ major }}
+        {% endfor %}
+    </p>
+    <p><label>Talabalar soni</label>{{ object.student_count }}</p>
+    <p><label>Potok</label>{{ object.flow }}</p>
+    <p><label>Guruhlar</label>{{ object.group }}</p>
+    <p><label>Kurs</label>{{ object.course }}</p>
+    <p><label>Til</label>{{ object.language }}</p>
+    <p><label>Semestr</label>{{ object.semester }}</p>
+    <p><label>Ma'ruza</label>{{ object.lecture }}</p>
+    <p><label>Amaliyot</label>{{ object.practice }}</p>
+    <p><label>Laboratoriya</label>{{ object.laboratory }}</p>
+    <p><label>Seminar</label>{{ object.seminar }}</p>
+    <p><label>Kurs ishi</label>{{ object.coursework }}</p>
+</div>
+<div class="container-control">
+    <form method="Post">{% csrf_token %}
+    <button type="submit" id="Delete"><i class='bx bxs-trash' ></i>O'chirish</button>
+    <button type="button" id="Cancel" onclick="location.href='{% url 'particles' %}';">Bekor qilish</button>
+    </form>
+</div>
+{% endblock content %}

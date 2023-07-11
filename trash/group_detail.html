@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/group_detail.css' %}">
+{% endblock css %}
+{% block content %}
+
+<div class="container caption">
+    <p><label>Nomi</label>{{ object.name }}</p>
+    <p><label>Yo'nalish</label>{{ object.major }}</p>
+    <p><label>Talabalar soni</label>{{ object.student_count }}</p>
+    <p><label>Kurs</label>{{ object.course }}</p>
+    <p style="border: none;"><label>Til</label>{{ object.language }}</p>
+</div>
+<div class="container">
+    <table>
+        <caption>{{ object.name }} GURUH FANLAR RO'YXATI</caption>
+        <tr>
+            <th>Fan</th>
+            <th>Semestr</th>
+            <th>Ma'ruza</th>
+            <th>Amaliyot</th>
+            <th>Laboratoriya</th>
+            <th>Seminar</th>
+            <th>Kurs ishi</th>
+            <th></th>
+        </tr>
+    {% for science in object.sciences.all %}
+    <tr>
+        <td>{{ science.science }}</td>
+        <td>{{ science.semester }}</td>
+        <td>{{ science.lecture }}</td>
+        <td>{{ science.practice }}</td>
+        <td>{{ science.laboratory }}</td>
+        <td>{{ science.seminar }}</td>
+        <td>{{ science.coursework }}</td>
+        <td>
+            <button id="Edit" onclick="location.href=`{% url 'group_sciences_edit' science.pk %}`"><i class='bx bxs-edit-alt'></i></button>
+            <button id="Delete"><i class='bx bxs-trash' ></i></button>
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+</div>
+{% block sciences %}{% endblock sciences %}
+<div class="container-control">
+    <a href="{% url 'group_sciences_create' object.pk %}" id="Add">
+        <i class='bx bx-message-square-add'></i>
+        <span>Qo'shish</span>
+    </a>
+</div>
+
+
+
+{% endblock content %}

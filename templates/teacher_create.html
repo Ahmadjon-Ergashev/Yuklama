@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/edit_div.css' %}">
+{% endblock css %}
+{% block header-title %}O'QITUVCHILAR{% endblock header-title %}
+{% block content %}
+<div class="container edit">
+    <h1>O'QITUVCHI QO'SHISH</h1>
+    <form method="POST">{% csrf_token %}
+        {{ form.as_div }}
+        <div class="buttons">
+            <input type="submit" value="Saqlash">
+            <input type="button" value="Bekor qilish" onclick="location.href='{% url 'teachers' %}';">
+        </div>
+    </form>
+</div>
+{% endblock content %}

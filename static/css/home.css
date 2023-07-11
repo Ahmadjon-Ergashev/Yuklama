@@ -1,0 +1,50 @@
+.container{
+    box-shadow: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+.card{
+    width: 200px;
+    height: 300px;
+    background-image: linear-gradient(#3880de11 75%, #3B6FB365);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+.card:hover{
+    box-shadow: 0 1px 5px 1px rgb(172, 155, 155);
+    background-image: linear-gradient(#3880de11 25%, #3B6FB37c);
+    border-bottom: 10px solid #3B6FB3;
+    transition: .5s;
+}
+
+.card:hover > span{
+    font-size: 1.6em;
+    transition: .2s;
+}
+.card:hover > i{
+    padding: 10px;
+    font-size: 7em;
+    transition: .2s;
+}
+.container a{
+    text-decoration: none;
+}
+.card i{
+    font-size: 8em;
+    color: #3B6FB3;
+    /* color: #3c71b6; */
+    padding: 5px 0;
+    transition: 0.2s;
+}
+.card span{
+    font-size: 1.4em;
+    color: #283c46;
+    font-weight: 450;
+    transition: 0.2s;
+}

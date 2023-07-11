@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/sciences.css' %}">
+{% endblock css %}
+{% block header-title %}FANLAR{% endblock header-title %}
+{% block content %}
+<div class="container-control">
+    <a href="{% url 'home' %}" id="Back">
+        <i class='bx bx-arrow-back'></i>
+        <span>Ortga</span>
+    </a>
+    <a href="{% url 'science_create' %}" id="Add">
+        <i class='bx bx-message-square-add'></i>
+        <span>Qo'shish</span>
+    </a>
+    <a href="#" id="Export">
+        <i class='bx bx-spreadsheet' ></i>
+        <span>Export</span>
+    </a>
+</div>
+<div class="container">
+    {% if object_list %}
+    <table>
+        <caption>FANLAR RO'YXATI</caption>
+        <tr>
+            <th>Fanlar</th>
+            <th></th>
+        </tr>
+        {% for obj in object_list %}
+        <tr>
+            <td>{{ obj.name }}</td>
+            <td>
+                <button id="Edit" onclick="location.href=`{% url 'science_edit' obj.pk %}`"><i class='bx bxs-edit-alt'></i></button>
+                <button id="Delete" onclick="location.href=`{% url 'science_deactivate' obj.pk %}`"><i class='bx bxs-trash' ></i></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>Ma'lumot yo'q</p>
+    {% endif %}
+</div>
+{% endblock content %}

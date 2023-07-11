@@ -1,0 +1,87 @@
+.container{
+    width: 100%;
+}
+td ul{
+    list-style-type: none;
+    padding: 0;
+}
+@media only screen and (max-width: 1150px) {
+    main{
+        flex-direction: column;
+    }
+    .container{
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .container table *{
+        font-size: 1em;
+    }
+    .container table td{
+        padding: 2px;
+    }
+    .container table td button{
+        width: 30px;
+        height: 30px;
+    }
+    .container table td:last-child{
+        width: 70px;
+    }
+    .container table > caption{
+        margin: 5px 0;
+    }
+    .container table tr:first-child{
+        height: 60px;
+    }
+}
+@media only screen and (max-width: 755px) {
+    .container{
+        padding: 5px;
+    }
+    .container table td button > i{
+        font-size: 1em;
+    }
+    .container table td button{
+        width: 25px;
+        height: 25px;
+    }
+    .container table td:last-child{
+        width: 60px;
+    }
+}
+@media only screen and (max-width: 590px) {
+    .container table *{
+        font-size: 0.85em;
+    }
+    .container table td button{
+        width: 20px;
+        height: 20px;
+    }
+    .container table td:last-child{
+        width: 50px;
+    }
+}
+@media only screen and (max-width: 395px) {
+    .container table *{
+        font-size: 0.8em;
+    }
+    .container table td button{
+        width: 15px;
+        height: 15px;
+    }
+    .container table td:last-child{
+        width: 40px;
+    }
+}
+@media only screen and (max-width: 350px) {
+    .container table *{
+        font-size: 0.75em;
+    }
+    .container table td button{
+        width: 10px;
+        height: 10px;
+    }
+    .container table td:last-child{
+        width: 30px;
+    }
+}

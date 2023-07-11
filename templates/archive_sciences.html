@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/teachers.css' %}">
+{% endblock css %}
+{% block header-title %}ARXIVDAGI FANLAR{% endblock header-title %}
+{% block content %}
+<div class="container-control">
+    <a href="{% url 'archive' %}" id="Back">
+        <i class='bx bx-arrow-back'></i>
+        <span>Ortga</span>
+    </a>
+    <a href="{% url "teacher_create" %}" id="Add">
+        <i class='bx bx-message-square-add'></i>
+        <span>Qo'shish</span>
+    </a>
+    <a href="#" id="Export">
+        <i class='bx bx-spreadsheet' ></i>
+        <span>Export</span>
+    </a>
+</div>
+<div class="container">
+    {% if object_list %}
+    <table>
+        <caption>ARXIVDAGI FANLAR RO'YXATI</caption>
+        <tr>
+            <th>Fan</th>
+            <th></th>
+        </tr>
+        {% for obj in object_list %}
+        <tr>
+            <td>{{ obj.name }}</td>
+            <td>
+                <button id="Edit" onclick="location.href=`{% url 'teacher_edit' obj.pk %}`"><i class='bx bxs-edit-alt'></i></button>
+                <button id="Delete" onclick="location.href=`{% url 'teacher_deactivate' obj.pk %}`"><i class='bx bx-vertical-bottom'></i></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>Ma'lumot yo'q</p>
+    {% endif %}
+</div>
+{% endblock content %}

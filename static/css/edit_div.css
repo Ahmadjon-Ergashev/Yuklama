@@ -1,0 +1,161 @@
+*{
+    font-size: 1.1rem;
+}
+form{
+    display: flex;
+    flex-wrap: wrap;
+}
+.edit{
+    padding: 15px 50px;
+}
+.edit h1{
+    font-size: 1.5em;
+    font-weight: 500;
+    text-align: center;
+}
+form div{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    box-shadow: none;
+    padding: 0;
+    width: 200px;
+}
+
+form div input:not([type='checkbox'], [type='button'], [type='submit']), form div select{
+    width: 100%;
+    
+}
+fieldset div{
+    display: block;
+    margin: 0;
+}
+fieldset{
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+fieldset>div{
+    width: 200px;
+}
+fieldset>div label{
+    font-size: .8em;
+}
+fieldset>legend{
+    font-weight: 400;
+    font-size: 1.1em;
+}
+form label{
+    font-weight: 400;
+    font-size: 1.1em;
+}
+form input[type="submit"]{
+    width: 130px;
+    font-size: 1rem;
+    background-color: #396db1;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+form input[type="button"]{
+    width: 130px;
+    /* font-size: 1.2em; */
+    background-color: #b1394d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+form input[type="submit"]:hover, form input[type="button"]:hover {
+    opacity: 0.9;
+    transition: 0.3s;
+}
+form input[type="submit"]:active, form input[type="button"]:active {
+    opacity: 0.85;
+    transition: 0.2s;
+}
+form .buttons{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+}
+.option-splitter{
+    color: rgb(26, 26, 43); 
+    font-weight: 500; 
+    font-size: 0.8em; 
+    text-align: center;
+}
+.caption span{
+    box-sizing: border-box;
+    padding: 40px;
+    font-size: 1.6em;
+    font-weight: 600;
+    color: #002147;
+    letter-spacing: 0.08em;
+    background-color: #4890ed7b;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+#id_sciences{
+    border: 1px solid rgb(118, 118, 118);
+    padding: 5px;
+}
+#id_majors{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#id_majors>div{
+    width: 50%;
+}
+
+.field_check{
+    padding-left: 20px;
+    flex-direction: row;
+    gap: 10px;
+    margin: 0;
+}
+.field_check > label{
+    font-weight: 200;
+    font-size: 1em;
+}
+
+@media only screen and (max-width: 615px) {
+    .edit{
+        padding: 10px;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 450px) {
+    form p{
+        font-size: 0.85em;
+    }
+    h1{
+        font-size: 1.5em;
+    }
+    form sub input[type="submit"], form sub input[type="button"]{
+        font-size: 0.85em;
+    }
+}
+@media only screen and (max-width: 350px) {
+    form div{
+        font-size: 0.75em;
+    }
+    h1{
+        font-size: 1.3em;
+    }
+    form sub input[type="submit"], form sub input[type="button"]{
+        font-size: 0.75em;
+    }
+    form sub{
+        gap: 20px;
+    }
+}

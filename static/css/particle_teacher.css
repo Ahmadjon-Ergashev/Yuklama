@@ -1,0 +1,32 @@
+.container{
+    width: calc(100%);
+}
+.caption p{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 200px;
+    /* padding: 10px 50px; */
+    /* font-size: 1.1em; */
+    /* width: 100%; */
+    /* margin: 0; */
+    border-right: 1px solid #9d9d9d;
+}
+.caption p:last-child{
+    border-right: none;
+}
+.caption{
+    /* position: sticky;
+    bottom: 0; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-flow: 2;
+    background-color: white;
+    flex-wrap: wrap;
+}
+p label{
+    /* width: 170px; */
+    font-weight: 500;
+    /* margin: 10px 0; */
+}

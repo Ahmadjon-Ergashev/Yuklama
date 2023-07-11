@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/home.css' %}">
+    <link rel="stylesheet" href="{% static '/css/settings.css' %}">
+{% endblock css %}
+{% block header-title %}ARXIV{% endblock header-title %}
+{% block content %}
+<div class="container">
+    <a href="#">
+        <div class="card card-sciences">
+            <i class='bx bxl-stack-overflow'></i>
+            <span>Yo'nalishlar</span>
+        </div>
+    </a>
+    <a href="#">
+        <div class="card card-sciences">
+            <i class='bx lang'>UZ<br>RU</i>
+            <span>Tillar</span>
+        </div>
+    </a>
+    <a href="#">
+        <div class="card card-teachers">
+            <i class='bx bx-signal-5'></i>
+            <span>Koeffitsentlar</span>
+        </div>
+    </a>
+    <a href="#">
+        <div class="card card-sciences">
+            <i class='bx bxs-calendar-check'></i>
+            <span>Ruxsatlar</span>
+        </div>
+    </a>
+</div>
+
+{% endblock content %}
+
+

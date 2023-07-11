@@ -1,0 +1,41 @@
+from django.urls import path
+from django.views.generic import TemplateView
+from .views import (
+    HomeView,
+    ScienceView,
+    ScienceEditView,
+    ScienceCreateView,
+    ParticleView,
+    ParticleCreateView,
+    ParticleChangeView,
+    ParticleDeleteView,
+    ParticleTeachersView,
+    ParticleTeacherCreateView,
+    ParticleTeacherDeleteView,
+    SelfParticleView,
+    SelfParticleDeleteView,
+    ArchiveView,
+    ScienceDeActivateView,
+    DeactivatedSciencesView,
+    SettingsView,
+)
+
+urlpatterns = [
+    path('', HomeView.as_view(), name='home'),
+    path('sciences/', ScienceView.as_view(), name='sciences'),
+    path('sciences/create', ScienceCreateView.as_view(), name='science_create'),
+    path('sciences/<int:pk>/edit/', ScienceEditView.as_view(), name='science_edit'),
+    path('particles/', ParticleView.as_view(), name='particles'),
+    path('particles/create', ParticleCreateView.as_view(), name='particle_create'),
+    path('particles/<int:pk>/edit', ParticleChangeView.as_view(), name='particle_edit'),
+    path('particles/<int:pk>/delete', ParticleDeleteView.as_view(), name='particle_delete'),
+    path('particle/<int:pk>/dist', ParticleTeachersView.as_view(), name='particle_teachers'),
+    path('particle/<int:pk>/dist/create', ParticleTeacherCreateView.as_view(), name='particle_teachers_create'),
+    path('particle/<int:id>/dist/<int:pk>/delete', ParticleTeacherDeleteView.as_view(), name='delete'),
+    path('profile/particles', SelfParticleView.as_view(), name='self_particles'),
+    path('profile/particles/<int:pk>/delete', SelfParticleDeleteView.as_view(), name='self_particle_delete'),
+    path('archive/', ArchiveView.as_view(), name='archive'),
+    path('sciences/<int:pk>/archive/', ScienceDeActivateView.as_view(), name='science_deactivate'),
+    path('archive/sciences/', DeactivatedSciencesView.as_view(), name='deactivated_sciences'),
+    path('settings/', SettingsView.as_view(), name='settings'),
+]

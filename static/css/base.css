@@ -1,0 +1,479 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&family=Roboto:wght@300;400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 350;
+}
+
+body {
+    margin: 0;
+}
+
+.sidebar a,
+.sidebar button,
+td button {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar {
+    position: fixed;
+    float: left;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 75px;
+    margin-top: 50px;
+    height: 100%;
+    background-color: #283c46;
+    transition: all 0.4s;
+    color: white;
+}
+
+body.open .sidebar {
+    width: 240px;
+}
+
+body.open main {
+    margin-left: 265px;
+    width: calc(100% - 290px);
+    transition: all .4s;
+}
+
+.sidebar-inner {
+    top: 0;
+    left: 0;
+    width: 240px;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.1);
+    border-left: 3px solid transparent;
+    transition: all .4s;
+}
+
+.sidebar-header:hover {
+    border-left: 3px solid #bdbdbd;
+}
+
+.sidebar-burger {
+    width: 70px;
+    height: 70px;
+    display: grid;
+    place-items: center;
+}
+
+.sidebar-burger>i,
+body.open .sidebar-burger>i {
+    font-size: 25px;
+    color: #f9f9f9;
+    transition: all 0.4s;
+}
+
+.sidebar-burger:hover>i,
+body.open .sidebar-burger:hover>i {
+    color: #bdbdbd;
+}
+
+.sidebar-logo {
+    height: 30px;
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    opacity: 0;
+    transition: all .4s;
+}
+
+body.open .sidebar-logo {
+    opacity: 1;
+    transition: all .4s;
+}
+
+.sidebar-menu {
+    display: grid;
+}
+
+.sidebar-menu>a {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    height: 55px;
+    font-family: "Inter", "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 1;
+    padding: 0 22px;
+    border-left: 3px solid transparent;
+    transition: all .4s;
+}
+
+.sidebar-menu>a:hover {
+    border-left: 3px solid #f9f9f9;
+}
+
+.sidebar-menu>a.has-border {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 1rem;
+}
+
+.sidebar-menu>a>i {
+    font-size: 25px;
+    color: #f0f0f0;
+    transition: all .4s;
+}
+
+.sidebar-menu>a:hover>i,
+.sidebar-menu>a:hover>span {
+    color: #bdbdbd;
+}
+
+.sidebar-menu>a>span {
+    color: #f9f9f9;
+    opacity: 0;
+    transition: all .4s;
+}
+
+body.open .sidebar-menu>a>span {
+    opacity: 1;
+    transition: all .4s;
+}
+
+main div {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 15px 3px rgb(172, 155, 155);
+    margin: 10px 0 0 0;
+    transition: 0.3s;
+}
+
+header {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 50px;
+    font-family: "Roboto", "Inter", sans-serif;
+    background-color: #3c71b6;
+    /* background-color: #745FFF; */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    z-index: 100;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+    width: 400px;
+}
+
+header .logo span {
+    font-size: 1.2em;
+    /* letter-spacing: 1px; */
+    font-weight: 450;
+    /* color: #f9f9f9; */
+    color: #cceaff;
+}
+
+header .logo img {
+    width: 45px;
+}
+header .header-title{
+    position: absolute;
+    font-size: 1.2em;
+    /* color: #cceaff; */
+    color: #f9f9f9;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-align: center;
+    min-width: 98%;
+    z-index: -1;
+}
+
+header .profile {
+    position: absolute;
+    right: 15px;
+    font-size: 1.2em;
+    color: #cceaff;
+    transition: all .4s;
+}
+
+header .profile .dropbtn {
+    padding: 0 15px;
+    font-size: 1.5em;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    cursor: pointer;
+}
+header .profile .dropbtn i{
+    font-size: 1em;
+}
+.profile-content {
+    display: none;
+    position: fixed;
+    top: 35px;
+    right: 5px;
+    background-color: #e0e0f0;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.profile-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-content a {
+    float: none;
+    color: black;
+    padding: 5px 16px;
+    text-decoration: none;
+    font-size: 0.9em;
+    display: block;
+    text-align: left;
+    font-weight: 400;
+}
+.profile-content li:nth-child(1)>p {
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.8em;
+    color: rgb(60, 113, 182);
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.profile-content li:last-child>a {
+    color: rgb(194, 0, 81);
+}
+
+.profile-content a:hover {
+    background-color: #ddd;
+}
+
+.profile:hover .profile-content {
+    display: block;
+}
+
+.container-control {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    position: sticky;
+    background-color: #e0e0f0a1;
+    top: 50px;
+    min-width: 100%;
+    z-index: 1;
+}
+
+.container-control a {
+    width: 130px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.container-control a:hover {
+    opacity: 0.9;
+    transition: 0.3s;
+}
+
+.container-control a:active {
+    opacity: 0.85;
+    transition: 0.2s;
+}
+
+#Add {
+    background-color: rgb(8, 100, 38);
+}
+#Back{
+    background-color: #3c71b6;
+}
+#Export{
+    background-color: #893cb6;
+}
+
+main {
+    margin-left: 100px;
+    display: flex;
+    align-items: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+    width: calc(100% - 120px);
+    transition: .4s;
+    box-sizing: border-box;
+}
+
+.container-control {
+    width: 120px;
+    padding: 15px;
+}
+
+table>caption {
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #002147;
+    letter-spacing: 0.08em;
+    background-color: #4890ed7b;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table tr {
+    border-bottom: 1px solid #bdbdbd;
+}
+
+td:not(:last-child) {
+    padding: 10px;
+    text-align: center;
+}
+
+td:last-child {
+    width: 140px;
+}
+
+th {
+    font-size: 1.2em;
+    font-weight: 500;
+    padding: 5px;
+    border-right: 1px dotted #9d9d9d;
+}
+
+tr:first-child {
+    height: 100px;
+    /* background-color: #3880de23; */
+    background-image: linear-gradient(#4890ed7b, #3880de11);
+}
+
+td button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #9d9d9d;
+}
+
+td #Edit:hover, td #Edit:hover i{
+    background-color: #396db1;
+    color: white;
+    transition: .2s;
+}
+
+td #Delete:hover, td #Delete:hover i{
+    background-color: #b1394d;
+    color: white;
+    transition: .2s;
+}
+
+td button i {
+    font-size: 20px;
+    background: transparent;
+}
+
+td #Edit i {
+    color: #396db1;
+}
+
+td #Delete i {
+    color: #b1394d;
+}
+
+table ul li{
+    margin: 10px 0;
+    border-bottom: 1px solid #9d9d9d;
+}
+
+::selection {
+    background-color: #9d9d9d;
+}
+
+@media only screen and (max-width: 730px) {
+    .sidebar {
+        height: 50px;
+        width: 50px;
+        left: 0;
+        top: 0;
+        margin-top: 0;
+        overflow: hidden;
+    }
+
+    body.open .sidebar {
+        overflow: scroll;
+    }
+
+    .sidebar-header {
+        height: 50px;
+        background: #315380;
+    }
+
+    .sidebar-header button>i,
+    body.open .sidebar-menu a>i,
+    body.open .sidebar-menu a>span {
+        font-size: 13px;
+    }
+
+    body.open .sidebar-menu a {
+        height: 40px;
+    }
+
+    .sidebar-header button {
+        width: 50px;
+        height: 50px;
+        margin-top: -3px;
+        margin-left: -3px;
+    }
+
+    body.open .sidebar {
+        width: 200px;
+        height: 100%;
+    }
+
+    body.open main,
+    main {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: calc(100% - 20px);
+        transition: all .4s;
+    }
+
+    header {
+        padding-left: 60px;
+        font-size: 1em;
+    }
+
+    header p,
+    header .profile {
+        font-size: 0.8em;
+    }
+}
